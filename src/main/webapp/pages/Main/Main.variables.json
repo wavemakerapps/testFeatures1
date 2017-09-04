@@ -470,7 +470,7 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ {
       "target" : "Cookie",
-      "value" : "auth_cookie=xXPMnXfr6Z7Rk4bsC6mqMkCX20d2de7face01",
+      "value" : "bind:Widgets.AllTypesLiveForm1.formWidgets.textCol.datavalue",
       "type" : "string"
     } ],
     "type" : "projectList.RootResponseROOTEntryItem",
