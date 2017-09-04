@@ -1,0 +1,11 @@
+{
+  "serverUrl" : "https://corridor.pramati.com/cas",
+  "loginUrl" : "https://corridor.pramati.com/cas/login",
+  "validationUrl" : "https://corridor.pramati.com/cas",
+  "logoutUrl" : "https://corridor.pramati.com/cas/logout",
+  "serviceParameter" : "service",
+  "artifactParameter" : "ticket",
+  "roleMappingEnabled" : false,
+  "roleMappingConfig" : null,
+  "attributes" : [ "firstname", "birthdate", "mail", "telephonenumber", "jobtitle", "employeenumber", "homepostaladdress", "postaladdress", "cn", "Lastpwdchange", "alternatemail", "title", "lastname", "defaultpwd", "baselocation", "uid", "joiningdate", "worklocation" ]
+}
