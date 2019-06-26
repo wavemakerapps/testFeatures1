@@ -4,14 +4,23 @@
     <bean class="com.wavemaker.runtime.security.controller.SecurityController" id="securityController"/>
     <bean class="com.wavemaker.runtime.web.filter.SSLSecureFilter" id="sslSecureFilter"/>
     <bean class="com.wavemaker.runtime.security.xss.filter.WMXSSFilter" id="wmXSSFilter"/>
-    <bean class="com.wavemaker.runtime.security.filter.WMXFrameOptionsHeaderFilter" id="wmXFrameOptionsFilter">
-        <property name="xFrameOptionsMode" value="${general.xFrameOptions.mode}"/>
-        <property name="allowFromUrl" value="${general.xFrameOptions.allowFromUrl}"/>
+    <bean class="com.wavemaker.runtime.security.filter.WMFrameOptionsHeaderFilter" id="wmFrameOptionsFilter">
+        <property name="frameOptions" ref="frameOptions"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.FrameOptions" id="frameOptions">
+        <property name="enabled" value="${general.frameOptions.enabled}"/>
+        <property name="mode" value="${general.frameOptions.mode}"/>
+        <property name="allowFromUrl" value="${general.frameOptions.allowFromUrl}"/>
     </bean>
     <bean class="com.wavemaker.runtime.security.filter.WMXContentTypeOptionsFilter" id="wmXContentTypeOptionsFilter"/>
+    <bean class="org.springframework.web.filter.CorsFilter" id="corsFilter">
+        <constructor-arg ref="corsConfigurationSource"/>
+    </bean>
+    <bean class="org.springframework.web.cors.UrlBasedCorsConfigurationSource" id="corsConfigurationSource"/>
+    <bean class="com.wavemaker.runtime.cors.CorsBeanPostProcessor" id="corsBeanPostProcessor"/>
     <bean class="org.springframework.security.web.FilterChainProxy" id="wmCompositeSecurityFilter">
         <constructor-arg>
-            <security:filter-chain pattern="/**" filters="sslSecureFilter, wmXSSFilter, wmXFrameOptionsFilter, wmXContentTypeOptionsFilter"/>
+            <security:filter-chain pattern="/**" filters="sslSecureFilter, wmXSSFilter, wmFrameOptionsFilter, wmXContentTypeOptionsFilter,corsFilter"/>
         </constructor-arg>
     </bean>
     <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
@@ -30,11 +39,11 @@
         <property name="enforceSecurity">
             <value>${enabled}</value>
         </property>
+        <property name="rolesConfig" ref="rolesConfig"/>
         <property name="loginConfig" ref="loginConfig"/>
         <property name="rememberMeConfig" ref="rememberMeConfig"/>
         <property name="tokenAuthConfig" ref="tokenAuthConfig"/>
         <property name="csrfConfig" ref="csrfConfig"/>
-        <property name="rolesConfig" ref="rolesConfig"/>
     </bean>
     <bean class="com.wavemaker.commons.model.security.SSLConfig" id="sslConfig">
         <property name="useSSL" value="${general.ssl.enabled}"/>
@@ -49,8 +58,15 @@
     <bean class="com.wavemaker.commons.model.security.CorsConfig" id="corsConfig">
         <property name="enabled" value="${general.cors.enabled}"/>
         <property name="maxAge" value="${general.cors.maxAge}"/>
+        <property name="allowCredentials" value="${general.cors.allowCredentials}"/>
         <property name="pathEntries">
-            <list/>
+            <list>
+                <bean class="com.wavemaker.commons.model.security.PathEntry" id="root">
+                    <property name="name" value="root"/>
+                    <property name="path" value="/**"/>
+                    <property name="allowedOrigins" value="${general.cors.root.allowedOrigins}"/>
+                </bean>
+            </list>
         </property>
     </bean>
     <security:global-method-security pre-post-annotations="enabled" authentication-manager-ref="authenticationManager"/>
@@ -75,6 +91,7 @@
     <security:http auto-config="false" use-expressions="true" entry-point-ref="WMSecAuthEntryPoint" disable-url-rewriting="true" name="interceptUrlsBean" authentication-manager-ref="authenticationManager">
         <security:intercept-url pattern="/j_spring_cas_security_check" access="permitAll"/>
         <security:intercept-url pattern="/j_spring_security_logout" access="permitAll"/>
+        <security:intercept-url pattern="/pages/Login/**" access="permitAll"/>
         <security:intercept-url pattern="/services/application/i18n/**" access="permitAll"/>
         <security:intercept-url pattern="/services/prefabs/**/servicedefs" access="permitAll"/>
         <security:intercept-url pattern="/services/security/ssologin" access="isAuthenticated()"/>
@@ -148,7 +165,7 @@
     <bean class="com.wavemaker.runtime.security.rememberme.WMAppRememberMeServices" id="rememberMeServices">
         <constructor-arg value="WM_APP_KEY"/>
     </bean>
-    <bean class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter" id="rememberMeAuthFilter">
+    <bean class="com.wavemaker.runtime.security.rememberme.WMRememberMeAuthenticationFilter" id="rememberMeAuthFilter">
         <constructor-arg ref="authenticationManager"/>
         <constructor-arg ref="rememberMeServices"/>
     </bean>
@@ -209,18 +226,15 @@
         <property name="serviceProperties" ref="casServiceProperties"/>
         <property name="key" value="casAuthProviderKey"/>
         <property name="authenticationUserDetailsService" ref="wmCasUserDetailsByNameServiceWrapper"/>
-        <property name="ticketValidator">
-            <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
-                <property name="URLConnectionFactory">
-                    <bean class="org.jasig.cas.client.ssl.HttpsURLConnectionFactory">
-                        <property name="hostnameVerifier">
-                            <bean class="org.jasig.cas.client.ssl.AnyHostnameVerifier"/>
-                        </property>
-                    </bean>
-                </property>
-                <constructor-arg value="${providers.cas.serverUrl}"/>
-            </bean>
-        </property>
+        <property name="ticketValidator" ref="cas20ServiceTicketValidator"/>
+    </bean>
+    <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator" id="cas20ServiceTicketValidator">
+        <constructor-arg value="${providers.cas.serverUrl}"/>
+        <property name="URLConnectionFactory" ref="casUrlConnectionFactory"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.cas.WMCasHttpsURLConnectionFactory" id="casUrlConnectionFactory">
+        <property name="sslSocketFactory" ref="appSSLSocketFactory"/>
+        <property name="hostnameVerifier" ref="appHostnameVerifier"/>
     </bean>
     <bean class="org.springframework.security.cas.ServiceProperties" id="casServiceProperties">
         <property name="service" value="/"/>

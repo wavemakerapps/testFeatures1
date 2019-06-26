@@ -1,6 +1,6 @@
 <wm-partial data-ng-controller="CommonPageController" name="CommonPage">
     <wm-view name="loginDialogView" class="dialog-view">
-        <wm-logindialog modal="true" name="CommonLoginDialog" iconclass="wi wi-sign-in" title="Login" on-submit="Variables.loginVariable.invoke()" on-error="CommonLoginDialogError($event, $scope)" on-success="CommonLoginDialogSuccess($event, $scope)">
+        <wm-logindialog modal="true" name="CommonLoginDialog" iconclass="wi wi-sign-in" title="Login" on-submit="Actions.loginAction.invoke()" on-error="CommonLoginDialogError($event, $scope)" on-success="CommonLoginDialogSuccess($event, $scope)">
             <wm-form name="loginform">
                 <wm-message scopedataset="loginMessage" class="app-login-dialog-message" name="loginmessage"></wm-message>
                 <wm-layoutgrid name="layoutgrid1">

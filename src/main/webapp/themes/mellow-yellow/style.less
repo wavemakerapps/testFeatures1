@@ -148,7 +148,7 @@
     border-bottom-color: @brand-primary;
     > li {
       margin-right: .2em;
-      > a, .app-menu a {
+      > a {
         color: @text-color;
         .gradient-normal; //background-color
         border-bottom-color: transparent;
@@ -163,7 +163,7 @@
         }
       }
       &.active {
-        > a, .app-menu a {
+        > a {
           border: 1px solid @nav-tabs-border-color;
           color: @nav-tabs-active-link-hover-color;
           background: @brand-primary;
@@ -175,6 +175,20 @@
           }
         }
       }
+      //Default styles for menu in nav
+      &.app-nav-item > .dropdown > a.dropdown-toggle {
+        padding: @nav-link-padding;
+        color: @text-color;
+        .gradient-normal; //background-color
+        border: 1px solid @nav-tabs-border-color;
+        border-radius: 4px 4px 0 0;
+        text-transform: uppercase;
+        line-height: 1.42857143;
+      }
+    }
+    //Styles for nav widget of type tabs
+    &.app-nav {
+      border-color: @nav-tabs-border-color;
     }
   }
 /***Tabs Widget: Styling for the tabs widget comes here********/
@@ -878,9 +892,6 @@
   .app-colorpicker {
     &.input-group {
       width: 13em;
-    }
-    .input-group-addon {
-      padding: 0.833em 1.333em;
     }
   }
 /*******popover class*******/

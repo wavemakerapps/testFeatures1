@@ -25,4 +25,6 @@ src/main/webapp/WEB-INF/lib/**
 src/main/webapp/wmapp/**
 src/main/webapp/wmmobile/**
 target/**
+src/main/webapp/WEB-INF/prefabs/*/build/**
 
+src/main/webapp/WEB-INF/data/*.properties

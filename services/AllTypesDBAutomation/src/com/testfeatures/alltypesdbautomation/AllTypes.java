@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -18,9 +19,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -42,12 +40,11 @@ public class AllTypes implements Serializable {
     private BigDecimal bigdecCol;
     private Long bigintCol;
     private String charCol;
-    private String stringCol;
+    private String stringCol = "test *#$@";
     private String textCol;
     private String clobCol;
     private Date dateCol;
     private Time timeCol;
-    @Type(type = "DateTime")
     private LocalDateTime datetimeCol;
     private Timestamp timestampCol;
     private Boolean booleanCol;
@@ -241,4 +238,3 @@ public class AllTypes implements Serializable {
         return Objects.hash(getId());
     }
 }
-

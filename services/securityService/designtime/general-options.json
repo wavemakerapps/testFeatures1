@@ -28,7 +28,12 @@
   "corsConfig" : {
     "enabled" : false,
     "maxAge" : 1600,
-    "pathEntries" : [ ]
+    "allowCredentials" : false,
+    "pathEntries" : [ {
+      "name" : "root",
+      "path" : "/**",
+      "allowedOrigins" : "*"
+    } ]
   },
   "tokenAuthConfig" : {
     "enabled" : true,
@@ -36,7 +41,8 @@
     "tokenValiditySeconds" : 1800
   },
   "authProviders" : [ "CAS" ],
-  "xFrameOptions" : {
+  "frameOptions" : {
+    "enabled" : true,
     "mode" : "SAMEORIGIN",
     "allowFromUrl" : null
   }

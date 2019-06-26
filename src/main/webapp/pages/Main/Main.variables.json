@@ -262,7 +262,11 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
-    "package" : "com.testfeatures.alltypesdbautomation.AllTypes"
+    "package" : "com.testfeatures.alltypesdbautomation.AllTypes",
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    }
   },
   "BooleanPValue" : {
     "_id" : "wm-BooleanPValue-wm.ServiceVariable-1504531837176",
@@ -623,7 +627,11 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
-    "package" : "com.testfeatures.sales.Sale"
+    "package" : "com.testfeatures.sales.Sale",
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ ]
+    }
   },
   "shortPValue" : {
     "_id" : "wm-shortPValue-wm.ServiceVariable-1504532153240",
