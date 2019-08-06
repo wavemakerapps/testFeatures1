@@ -1,0 +1,16 @@
+[ {
+  "providerId" : "linkedin",
+  "authorizationUrl" : "${oauth2.linkedin.authorizationUrl}",
+  "accessTokenUrl" : "${oauth2.linkedin.accessTokenUrl}",
+  "clientId" : "${oauth2.linkedin.clientId}",
+  "clientSecret" : "${oauth2.linkedin.clientSecret}",
+  "sendAccessTokenAs" : null,
+  "accessTokenParamName" : null,
+  "scopes" : [ {
+    "name" : "Basic Profile",
+    "value" : "r_basicprofile"
+  }, {
+    "name" : "liteProfile",
+    "value" : "r_liteprofile"
+  } ]
+} ]

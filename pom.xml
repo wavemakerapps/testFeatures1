@@ -34,6 +34,20 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/authService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/google/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/googleapis/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -42,6 +56,13 @@
             <resource>
                 <filtering>true</filtering>
                 <directory>services/hrdb/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/linkedin/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
@@ -160,8 +181,11 @@
                                 <source>services/AllTypesDBAutomation/src</source>
                                 <source>services/CountryInfoService/src</source>
                                 <source>services/MyJavaService/src</source>
+                                <source>services/authService/src</source>
+                                <source>services/google/src</source>
                                 <source>services/googleapis/src</source>
                                 <source>services/hrdb/src</source>
+                                <source>services/linkedin/src</source>
                                 <source>services/projectList/src</source>
                                 <source>services/sales/src</source>
                                 <source>services/securityService/src</source>
@@ -377,9 +401,9 @@
         <profile.props.file>development.properties</profile.props.file>
         <spring.version>4.3.14.RELEASE</spring.version>
         <spring.security.version>4.2.4.RELEASE</spring.security.version>
-        <wavemaker.studio.version>9.4.0.4.6995</wavemaker.studio.version>
+        <wavemaker.studio.version>9.4.0.5.7216</wavemaker.studio.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.lib.directory>${basedir}/lib</project.lib.directory>
-        <wavemaker.studio.release.version>9.4.0.4</wavemaker.studio.release.version>
+        <wavemaker.studio.release.version>9.4.0.5</wavemaker.studio.release.version>
     </properties>
 </project>

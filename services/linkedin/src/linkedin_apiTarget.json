@@ -1,0 +1,141 @@
+{
+  "basePath" : "${rest.linkedin.basepath}",
+  "paths" : {
+    "/me" : {
+      "x-WM-BASE_PATH" : "/me",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "get" : {
+        "x-WM-METHOD_NAME" : "invoke",
+        "security" : [ {
+          "oauth2" : [ ]
+        } ],
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY",
+        "produces" : [ "application/json" ],
+        "operationId" : "linkedin_RestServiceVirtualController-invoke",
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            },
+            "description" : "Success"
+          }
+        },
+        "tags" : [ "RestServiceVirtualController" ],
+        "consumes" : [ "application/json" ]
+      },
+      "x-WM-COMPLETE_PATH" : "${rest.linkedin.scheme}://${rest.linkedin.host}${rest.linkedin.basepath}/me"
+    }
+  },
+  "host" : "${rest.linkedin.host}",
+  "schemes" : [ "${rest.linkedin.scheme}" ],
+  "securityDefinitions" : {
+    "oauth2" : {
+      "accessTokenParamName" : "Bearer",
+      "tokenUrl" : "https://www.linkedin.com/uas/oauth2/accessToken",
+      "authorizationUrl" : "https://www.linkedin.com/uas/oauth2/authorization",
+      "sendAccessTokenAs" : "HEADER",
+      "type" : "oauth2",
+      "x-WM-PROVIDER_ID" : "linkedin"
+    }
+  },
+  "definitions" : {
+    "lastName" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "linkedin.lastName",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "localized", "preferredLocale" ],
+      "properties" : {
+        "localized" : {
+          "$ref" : "#/definitions/localized"
+        },
+        "preferredLocale" : {
+          "$ref" : "#/definitions/preferredLocale"
+        }
+      }
+    },
+    "firstName" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "linkedin.firstName",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "localized", "preferredLocale" ],
+      "properties" : {
+        "localized" : {
+          "$ref" : "#/definitions/localized"
+        },
+        "preferredLocale" : {
+          "$ref" : "#/definitions/preferredLocale"
+        }
+      }
+    },
+    "profilePicture" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "linkedin.profilePicture",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "displayImage" ],
+      "properties" : {
+        "displayImage" : {
+          "type" : "string"
+        }
+      }
+    },
+    "localized" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "linkedin.localized",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "en_US" ],
+      "properties" : {
+        "en_US" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RootResponse" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "linkedin.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "firstName", "id", "lastName", "localizedFirstName", "localizedLastName", "profilePicture" ],
+      "properties" : {
+        "localizedLastName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "$ref" : "#/definitions/lastName"
+        },
+        "firstName" : {
+          "$ref" : "#/definitions/firstName"
+        },
+        "profilePicture" : {
+          "$ref" : "#/definitions/profilePicture"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "localizedFirstName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "preferredLocale" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "linkedin.preferredLocale",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "country", "language" ],
+      "properties" : {
+        "country" : {
+          "type" : "string"
+        },
+        "language" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "swagger" : "2.0",
+  "info" : {
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "a8db8718-a003-455e-8c7b-1995fad7f06c",
+    "x-WM-SERVICE_ID" : "linkedin",
+    "version" : "2.0",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ]
+}

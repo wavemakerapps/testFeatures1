@@ -13,7 +13,7 @@
     "maxResults" : 20,
     "designMaxResults" : 10,
     "inFlightBehavior" : "executeLast",
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : true,
     "transformationRequired" : false,
     "liveSource" : "AllTypesDBAutomation",
@@ -262,11 +262,53 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
-    "package" : "com.testfeatures.alltypesdbautomation.AllTypes",
+    "filterFields" : { },
     "filterExpressions" : {
       "condition" : "AND",
-      "rules" : [ ]
-    }
+      "rules" : [ {
+        "target" : "",
+        "type" : "string",
+        "matchMode" : "anywhereignorecase",
+        "value" : "",
+        "required" : false,
+        "secondvalue" : ""
+      } ]
+    },
+    "package" : "com.testfeatures.alltypesdbautomation.AllTypes"
+  },
+  "atom" : {
+    "_id" : "wm-atom-wm.ServiceVariable-1565085349444",
+    "name" : "atom",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "wm_auth_username",
+      "value" : "wavemaker.apps@gmail.com",
+      "type" : "string"
+    }, {
+      "target" : "wm_auth_password",
+      "value" : "pramati123",
+      "type" : "string"
+    }, {
+      "target" : "atom",
+      "value" : "atom",
+      "type" : "string"
+    } ],
+    "type" : "google.RootResponse",
+    "service" : "google",
+    "operation" : "invoke",
+    "operationId" : "google_RestServiceVirtualController-invoke",
+    "operationType" : "get",
+    "serviceType" : "RestService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "RestServiceVirtual"
   },
   "BooleanPValue" : {
     "_id" : "wm-BooleanPValue-wm.ServiceVariable-1504531837176",
@@ -444,6 +486,28 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "MyJava"
+  },
+  "linkedin" : {
+    "_id" : "wm-linkedin-wm.ServiceVariable-1565089453770",
+    "name" : "linkedin",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "linkedin.RootResponse",
+    "service" : "linkedin",
+    "operation" : "invoke",
+    "operationId" : "linkedin_RestServiceVirtualController-invoke",
+    "operationType" : "get",
+    "serviceType" : "RestService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "RestServiceVirtual"
   },
   "LongPValue" : {
     "_id" : "wm-LongPValue-wm.ServiceVariable-1504532138825",
@@ -627,11 +691,11 @@
     "tableType" : "TABLE",
     "properties" : [ ],
     "relatedTables" : [ ],
-    "package" : "com.testfeatures.sales.Sale",
     "filterExpressions" : {
       "condition" : "AND",
       "rules" : [ ]
-    }
+    },
+    "package" : "com.testfeatures.sales.Sale"
   },
   "shortPValue" : {
     "_id" : "wm-shortPValue-wm.ServiceVariable-1504532153240",
@@ -654,6 +718,35 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "MyJava"
+  },
+  "staticVariable1" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1565090197815",
+    "name" : "staticVariable1",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "fullCountryInfoAllCountriesResult" : {
+        "tCountryInfo" : [ {
+          "sCurrencyISOCode" : "",
+          "sPhoneCode" : "",
+          "sCapitalCity" : "",
+          "sContinentCode" : "",
+          "sCountryFlag" : "",
+          "sisoCode" : "",
+          "sName" : "",
+          "languages" : {
+            "tLanguage" : [ {
+              "sName" : "",
+              "sisoCode" : ""
+            } ]
+          }
+        } ]
+      }
+    },
+    "type" : "com.testfeatures.services.countryinfoservice.FullCountryInfoAllCountriesResponse",
+    "isList" : false,
+    "saveInPhonegap" : false
   },
   "Websocket" : {
     "_id" : "wm-Websocket-wm.WebSocketVariable-1504531451271",

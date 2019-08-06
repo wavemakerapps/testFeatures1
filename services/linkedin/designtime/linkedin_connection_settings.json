@@ -1,0 +1,36 @@
+{
+  "endpointAddress" : "https://api.linkedin.com/v2/me",
+  "method" : "GET",
+  "headers" : {
+    "Authorization" : [ "Bearer AQUrFgP-nCIXDF9-yPdYit899AxKpHRoT7kJ89h7dgKCyIoSQuDcK9hiEK5h9RoDC0C0Fa4rxHDSbu9sthB1K0pF8JMLMVjPfKzJYs_mBXyfgYOGwW8jdNGg8iCRFXrQrM_5ZPib-HwG0DW60AOh5SpkjOmlzegWdunw1CkNPdYMxfXgjobstOMHvt47m8fhu5VxNHfyHzp1qqBbhl0yuLMtGruDa_MGHF3VQyKMBkNnxWRB1vg43Wc3GK0JxmW0hD1jK3FhFk3K9CM7UN1edjKNDf04PsBrKiz3LUTgdVA2NKp753PIUGEf5u7CrkAgyWZ1YfW_BmNBJp-9q5tNsGaGAKtyoA" ]
+  },
+  "redirectEnabled" : true,
+  "requestBody" : "",
+  "queryParams" : { },
+  "authDetails" : {
+    "providerId" : "linkedin",
+    "type" : "OAUTH2"
+  },
+  "contentType" : "application/json",
+  "multiParamInfoList" : null,
+  "sampleHttpResponseDetails" : {
+    "statusCode" : 200,
+    "headers" : {
+      "X-Li-Pop" : [ "prod-edc2" ],
+      "X-LI-Route-Key" : [ "\"b=SB59:g=155:u=80:i=1565089433:t=1565173306:s=AQEVN5GGe81rfDDFw8HeCl_9BjNi99wH\"" ],
+      "X-LI-Proto" : [ "http/1.1" ],
+      "Date" : [ "Tue, 06 Aug 2019 11:03:53 GMT" ],
+      "Content-Length" : [ "370" ],
+      "X-LI-UUID" : [ "MF46H4xQuBWgklAvYSsAAA==" ],
+      "Set-Cookie" : [ "lidc=\"b=SB59:g=155:u=80:i=1565089433:t=1565173306:s=AQEVN5GGe81rfDDFw8HeCl_9BjNi99wH\"" ],
+      "X-LI-ResponseOrigin" : [ "RGW" ],
+      "Content-Type" : [ "application/json" ],
+      "Connection" : [ "keep-alive" ],
+      "X-RestLi-Protocol-Version" : [ "1.0.0" ],
+      "X-Li-Fabric" : [ "prod-lsg1" ]
+    },
+    "responseBody" : "{\"localizedLastName\":\"Bonala\",\"lastName\":{\"localized\":{\"en_US\":\"Bonala\"},\"preferredLocale\":{\"country\":\"US\",\"language\":\"en\"}},\"firstName\":{\"localized\":{\"en_US\":\"Sai Rama Krishna\"},\"preferredLocale\":{\"country\":\"US\",\"language\":\"en\"}},\"profilePicture\":{\"displayImage\":\"urn:li:digitalmediaAsset:C5103AQHfYSDY5ZPAPA\"},\"id\":\"wCFpY2ZsrP\",\"localizedFirstName\":\"Sai Rama Krishna\"}",
+    "convertedResponse" : null
+  },
+  "proxy" : null
+}

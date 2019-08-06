@@ -1,0 +1,149 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2.0",
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "8f1a3fd2-9504-4045-851a-084208cf729e",
+    "x-WM-SERVICE_ID" : "google2",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "host" : "mail.google.com",
+  "basePath" : "/mail",
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/feed/{atom}" : {
+      "get" : {
+        "tags" : [ "RestServiceVirtualController" ],
+        "operationId" : "google_RestServiceVirtualController-invoke",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "atom",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ],
+        "x-WM-METHOD_NAME" : "invoke",
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY"
+      },
+      "x-WM-BASE_PATH" : "/feed/{atom}",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "x-WM-COMPLETE_PATH" : "${rest.google.scheme}://${rest.google.host}${rest.google.basepath}/feed/{atom}"
+    }
+  },
+  "securityDefinitions" : {
+    "basic" : {
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "author" : {
+      "required" : [ "email", "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "google.author",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "entryEntryItem" : {
+      "required" : [ "author", "id", "issued", "link", "modified", "summary", "title" ],
+      "properties" : {
+        "summary" : {
+          "type" : "string"
+        },
+        "author" : {
+          "$ref" : "#/definitions/author"
+        },
+        "link" : {
+          "$ref" : "#/definitions/link"
+        },
+        "modified" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "issued" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "google.entryEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "link" : {
+      "required" : [ "href", "rel", "type" ],
+      "properties" : {
+        "rel" : {
+          "type" : "string"
+        },
+        "href" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "google.link",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponse" : {
+      "required" : [ "entry", "fullcount", "link", "modified", "tagline", "title", "version", "xmlns" ],
+      "properties" : {
+        "fullcount" : {
+          "type" : "string"
+        },
+        "entry" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/entryEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "xmlns" : {
+          "type" : "string"
+        },
+        "link" : {
+          "$ref" : "#/definitions/link"
+        },
+        "tagline" : {
+          "type" : "string"
+        },
+        "modified" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "google.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    }
+  }
+}
